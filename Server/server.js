@@ -6,7 +6,7 @@ const EmployeeRouter=require('./Routes/EmployeeRouter');
 require('./DB/DB');
 app.use(cors());
 app.use(express.json());
-let port=8000;
+let port=process.env.PORT;
 app.use('/employee',EmployeeRouter);
 
 app.listen(port);
