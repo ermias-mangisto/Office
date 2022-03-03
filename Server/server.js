@@ -1,4 +1,5 @@
 const dotenv=require('dotenv');
+const path=require('path');
 dotenv.config();
 const express=require('express');
 const app=express();
@@ -16,3 +17,10 @@ app.listen(port);
 app.use(passport.initialize())
 app.use('/register',UserRouter);
 app.use('/employee',passport.authenticate("jwt",{session:false}),EmployeeRouter);
+
+if(process.env.NODE_ENV !== 'production'){
+    app.use(express.static(path.join(__dirname,"../client/build","index.html")));
+    app.get("/",(req, res) =>{
+        res.sendFile(path.join(__dirname,"../client/build","index.html"))
+    })
+}
