@@ -19,8 +19,8 @@ app.use('/register',UserRouter);
 app.use('/employee',passport.authenticate("jwt",{session:false}),EmployeeRouter);
 
 if(process.env.NODE_ENV == 'production'){
-    app.use(express.static(path.resolve(__dirname,"Office/client/build","index.html")));
+    app.use(express.static(app.use(express.static('app/client/build'))));
     app.get("*",(req, res) =>{
-        res.sendFile(path.resolve(__dirname,"Office/client/build","index.html"))
+        res.sendFile(path.resolve(__dirname,"app/client/build","index.html"))
     })
 }
