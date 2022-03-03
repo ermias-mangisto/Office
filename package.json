@@ -21,7 +21,7 @@
     "server": "nodemon node Server/server.js",
     "start": " node Server/server.js",
     "setUp": "npm install  && cd client && npm install",
-    "client": "cd client &&  npm run vite",
+    "client": "cd client &&  npm run start",
      "dev":"concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "heroku-postbuild": " cd client && npm install && npm install && npm run build"
   },
